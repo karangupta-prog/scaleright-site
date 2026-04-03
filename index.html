@@ -1,24 +1,1149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ScaleRight | Coming Soon</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; background: #0f172a; 
-           color: #f8fafc; display: flex; justify-content: center; 
-           align-items: center; height: 100vh; }
-    .box { text-align: center; padding: 2rem; }
-    h1 { font-size: 3rem; letter-spacing: -1px; margin-bottom: 1rem; }
-    h1 span { color: #38bdf8; }
-    p { color: #94a3b8; font-size: 1.1rem; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ScaleRight.in — Operational Consultancy for Indian Businesses</title>
+<link rel="icon" type="image/svg+xml" href="sr-logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --mint:     #EEF3EE;
+  --mint2:    #E4EDE4;
+  --forest:   #0F2E1E;
+  --forest2:  #1A4A2E;
+  --lime:     #C8D94A;
+  --lime2:    #D6E55A;
+  --white:    #FFFFFF;
+  --mid:      #5A7060;
+  --light:    #8AA090;
+  --rule:     #D6E0D6;
+  --card:     #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--mint);
+  color: var(--forest);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 56px;
+  background: rgba(238,243,238,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+.nav-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: block; flex-shrink: 0;
+}
+.nav-wordmark {
+  font-size: 1.05rem; font-weight: 700;
+  color: var(--forest); letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 0.875rem; font-weight: 400;
+  color: var(--mid); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--forest); }
+.nav-cta {
+  padding: 10px 22px; border-radius: 100px;
+  background: var(--forest); color: var(--white);
+  font-size: 0.85rem; font-weight: 600;
+  text-decoration: none; letter-spacing: -0.01em;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.nav-cta:hover { background: var(--forest2); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding: 120px 56px 80px;
+}
+.hero-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "badge  visual"
+    "title  visual"
+    "sub    visual"
+    "acts   visual";
+  column-gap: 60px;
+  align-items: start;
+}
+.hero-badge    { grid-area: badge; }
+.hero h1       { grid-area: title; }
+.hero-sub      { grid-area: sub; }
+.hero-right    { grid-area: visual; align-self: center; }
+.hero-actions  { grid-area: acts; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  background: var(--white); border: 1px solid var(--rule);
+  font-size: 0.78rem; font-weight: 500; color: var(--mid);
+  width: fit-content; margin-bottom: 28px;
+  opacity: 0; animation: up 0.6s 0.1s forwards;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lime); flex-shrink: 0;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.03em; color: var(--forest);
+  opacity: 0; animation: up 0.7s 0.2s forwards;
+}
+.hero h1 .green { color: var(--forest2); font-weight: 700; }
+.hero-sub {
+  margin-top: 24px; max-width: 580px;
+  font-size: 1rem; font-weight: 400; line-height: 1.75;
+  color: var(--mid);
+  opacity: 0; animation: up 0.7s 0.35s forwards;
+}
+.hero-actions {
+  margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: up 0.7s 0.5s forwards;
+}
+.btn-primary {
+  padding: 14px 28px; border-radius: 100px;
+  background: var(--forest); color: var(--white);
+  font-size: 0.9rem; font-weight: 600; letter-spacing: -0.01em;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--forest2); transform: translateY(-2px); }
+.btn-secondary {
+  padding: 14px 28px; border-radius: 100px;
+  background: transparent; color: var(--forest);
+  font-size: 0.9rem; font-weight: 500;
+  text-decoration: none;
+  border: 1.5px solid var(--rule);
+  display: inline-block;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: var(--forest); background: var(--white); }
+
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; animation: fadeIn 0.9s 0.4s forwards;
+}
+.hero-visual {
+  width: 100%; max-width: 460px; aspect-ratio: 3/4;
+  border-radius: 24px;
+  background: var(--white);
+  overflow: hidden; position: relative;
+  box-shadow: 0 24px 80px rgba(15,46,30,0.10);
+}
+.hero-visual-inner {
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(200,217,74,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(15,46,30,0.08) 0%, transparent 50%),
+    linear-gradient(160deg, #f0f5f0 0%, #e4ede4 100%);
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 36px;
+}
+.hero-visual-label {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 16px;
+}
+.hero-stat-row { display: flex; flex-direction: column; gap: 16px; }
+.hero-stat {
+  background: var(--white); border-radius: 14px;
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(15,46,30,0.06);
+}
+.hero-stat-num {
+  font-size: 1.6rem; font-weight: 800; color: var(--forest);
+  letter-spacing: -0.04em; line-height: 1;
+}
+.hero-stat-txt {
+  font-size: 0.72rem; font-weight: 500; color: var(--light);
+  text-align: right; line-height: 1.4;
+}
+.hero-stat-pill {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  background: var(--lime); color: var(--forest);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
+}
+.hero-abstract {
+  position: absolute; top: 0; left: 0; right: 0; height: 55%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.swirl {
+  width: 260px; height: 260px; opacity: 0.5;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 96px 56px; }
+.sec-rule {
+  width: 40px; height: 3px; border-radius: 2px;
+  background: var(--lime); margin-bottom: 16px;
+}
+.sec-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; letter-spacing: -0.03em;
+  color: var(--forest); line-height: 1.12;
+  margin-bottom: 16px;
+}
+.sec-desc {
+  font-size: 0.97rem; font-weight: 400; line-height: 1.8;
+  color: var(--mid); max-width: 560px; margin-bottom: 56px;
+}
+.centered { text-align: center; }
+.centered .sec-rule { margin: 0 auto 16px; }
+.centered .sec-desc { margin-left: auto; margin-right: auto; }
+
+/* ── SERVICES ── */
+#services { background: var(--mint); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.svc-card {
+  background: var(--card); border-radius: 20px;
+  padding: 32px 28px;
+  border: 1px solid var(--rule);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex; flex-direction: column;
+}
+.svc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(15,46,30,0.10);
+}
+.svc-card.featured {
+  background: var(--forest); border-color: var(--forest);
+}
+.svc-card.featured .svc-tag { background: rgba(200,217,74,0.2); color: var(--lime2); }
+.svc-card.featured h3 { color: var(--white); }
+.svc-card.featured p { color: rgba(255,255,255,0.6); }
+.svc-card.featured .svc-meta span { border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); }
+.svc-tag {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  background: var(--mint2); color: var(--mid);
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 20px; width: fit-content;
+}
+.svc-card h3 {
+  font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--forest); margin-bottom: 10px; line-height: 1.3;
+}
+.svc-card p {
+  font-size: 0.875rem; line-height: 1.75;
+  color: var(--mid); font-weight: 400; flex: 1; margin-bottom: 24px;
+}
+.svc-meta {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto;
+}
+.svc-meta span {
+  padding: 4px 12px; border-radius: 100px;
+  border: 1px solid var(--rule); color: var(--light);
+  font-size: 0.7rem; font-weight: 500;
+}
+.svc-wide { grid-column: span 2; }
+
+/* ── PROCESS ── */
+#process { background: var(--white); }
+.process-list {
+  display: flex; flex-direction: column; gap: 0; max-width: 860px;
+  border: 1px solid var(--rule); border-radius: 20px;
+  overflow: hidden; background: var(--white);
+  margin: 0 auto;
+}
+.proc-item {
+  display: grid; grid-template-columns: 60px 1fr;
+  gap: 28px; padding: 28px 32px;
+  border-bottom: 1px solid var(--rule);
+  transition: padding-left 0.3s;
+}
+.proc-item:first-child { border-top: none; }
+.proc-item:hover { padding-left: 8px; }
+.proc-num {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--mint); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; color: var(--mid);
+  flex-shrink: 0; margin-top: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.proc-item:hover .proc-num { background: var(--forest); color: var(--lime); }
+.proc-content h3 {
+  font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--forest); margin-bottom: 14px;
+}
+.proc-keywords { display: flex; flex-wrap: wrap; gap: 8px; }
+.proc-kw {
+  padding: 4px 12px; border-radius: 100px;
+  background: var(--mint); border: 1px solid var(--rule);
+  font-size: 0.72rem; font-weight: 600; color: var(--mid);
+  letter-spacing: 0.02em;
+}
+.proc-kw.accent {
+  background: rgba(200,217,74,0.15); border-color: rgba(200,217,74,0.4);
+  color: var(--forest2);
+}
+
+/* ── ABOUT ── */
+#why {
+  background: var(--forest);
+  padding: 96px 56px;
+}
+
+/* Block 1: credential bar */
+.about-creds {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; overflow: hidden;
+  margin-bottom: 56px;
+}
+.about-cred {
+  background: var(--forest);
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.about-cred-num {
+  font-size: 2.4rem; font-weight: 800;
+  color: var(--lime); letter-spacing: -0.04em; line-height: 1;
+}
+.about-cred-label {
+  font-size: 0.78rem; font-weight: 500;
+  color: rgba(255,255,255,0.45); line-height: 1.5;
+}
+
+/* Block 2: narrative + domain list */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; margin-bottom: 56px;
+}
+.about-narrative p {
+  font-size: 0.95rem; line-height: 1.9; font-weight: 400;
+  color: rgba(255,255,255,0.55); margin-bottom: 18px;
+}
+.about-narrative p:last-child { margin-bottom: 0; }
+.about-domains { display: flex; flex-direction: column; gap: 0; }
+.about-domain {
+  padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: grid; grid-template-columns: 24px 1fr; gap: 14px; align-items: start;
+}
+.about-domain:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+.about-domain-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lime); margin-top: 5px; flex-shrink: 0;
+}
+.about-domain h4 {
+  font-size: 0.88rem; font-weight: 600; color: var(--white);
+  margin-bottom: 3px; letter-spacing: -0.01em;
+}
+.about-domain p {
+  font-size: 0.81rem; color: rgba(255,255,255,0.45); line-height: 1.65; margin: 0;
+}
+
+/* Block 3: accountability strip */
+.about-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(200,217,74,0.15);
+  border: 1px solid rgba(200,217,74,0.2);
+  border-radius: 20px; overflow: hidden;
+}
+.about-strip-item {
+  background: rgba(200,217,74,0.07);
+  padding: 28px 28px 26px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.about-strip-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(200,217,74,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.about-strip-icon svg { width: 16px; height: 16px; }
+.about-strip-item h4 {
+  font-size: 0.9rem; font-weight: 700; color: var(--lime);
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.about-strip-item p {
+  font-size: 0.81rem; color: rgba(255,255,255,0.45);
+  line-height: 1.65; margin: 0;
+}
+
+/* Option B: 2-col domain mini-grid inside right column */
+.about-domains-2col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px;
+}
+.about-domains-2col .about-domain {
+  padding: 16px 0;
+}
+
+/* Option C: full-width stacked layout */
+.about-full-narrative {
+  margin-bottom: 40px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.about-full-narrative p {
+  font-size: 0.95rem; line-height: 1.9; font-weight: 400;
+  color: rgba(255,255,255,0.55); margin: 0;
+}
+.about-domains-row {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; overflow: hidden;
+}
+.about-domain-card {
+  background: var(--forest);
+  padding: 24px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.about-domain-card h4 {
+  font-size: 0.82rem; font-weight: 700; color: var(--white);
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.about-domain-card p {
+  font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin: 0;
+}
+
+/* Option label */
+.option-label {
+  display: inline-block; margin-bottom: 20px;
+  padding: 5px 14px; border-radius: 100px;
+  background: rgba(200,217,74,0.15); border: 1px solid rgba(200,217,74,0.3);
+  font-size: 0.72rem; font-weight: 700; color: var(--lime);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.option-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 48px 0;
+}
+
+@media (max-width: 1024px) {
+  .about-creds { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-domains-2col { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── CLIENTS ── */
+#clients { background: var(--white); }
+.carousel-wrap { position: relative; overflow: hidden; width: 100%; }
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-slide {
+  min-width: 100%; display: grid;
+  grid-template-columns: 1fr 1fr; gap: 24px;
+}
+.cc {
+  background: var(--mint); border-radius: 20px;
+  padding: 36px 32px; border: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 0;
+}
+.cc-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(200,217,74,0.18); border: 1px solid rgba(200,217,74,0.35);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--forest2);
+  width: fit-content; margin-bottom: 20px;
+}
+.cc-name {
+  font-size: 1.15rem; font-weight: 800; color: var(--forest);
+  letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 4px;
+}
+.cc-type {
+  font-size: 0.78rem; color: var(--light); font-weight: 500;
+  margin-bottom: 24px; padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.cc-block { margin-bottom: 18px; }
+.cc-block-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--light); margin-bottom: 7px;
+}
+.cc-block p {
+  font-size: 0.85rem; color: var(--mid); line-height: 1.75; font-weight: 400; margin: 0;
+}
+.cc-footer {
+  margin-top: auto; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.cc-service {
+  padding: 4px 12px; border-radius: 100px;
+  background: var(--white); border: 1px solid var(--rule);
+  font-size: 0.7rem; font-weight: 600; color: var(--mid);
+}
+.cc-status {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.7rem; font-weight: 600; color: var(--mid);
+}
+.cc-status-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--lime); flex-shrink: 0;
+}
+
+/* Client card collapsible body — desktop: always expanded */
+.cc-body { position: relative; }
+.cc-more-btn { display: none; }
+.btn-copy-email { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: inherit; }
+
+/* Carousel nav */
+.carousel-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin-top: 36px;
+}
+.carousel-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid var(--rule); background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.carousel-btn:hover { border-color: var(--forest); background: var(--forest); }
+.carousel-btn:hover svg { stroke: var(--white); }
+.carousel-btn svg { width: 16px; height: 16px; stroke: var(--forest); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.carousel-dots { display: flex; gap: 8px; }
+.carousel-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--rule); cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.carousel-dot.active { background: var(--forest); transform: scale(1.3); }
+
+@media (max-width: 720px) {
+  .carousel-slide { grid-template-columns: 1fr; }
+}
+
+/* ── CTA ── */
+.cta-section {
+  background: var(--white);
+  padding: 96px 56px;
+  text-align: center;
+}
+.cta-section .sec-rule { margin: 0 auto 16px; }
+.cta-section .sec-title { max-width: 600px; margin: 0 auto 16px; }
+.cta-section .sec-desc { margin: 0 auto 40px; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--forest);
+  padding: 60px 56px 36px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; color: var(--lime);
+  margin-bottom: 14px;
+}
+.footer-brand p {
+  font-size: 0.84rem; color: rgba(255,255,255,0.45);
+  line-height: 1.8; font-weight: 400; max-width: 260px; margin-top: 10px;
+}
+.footer-col h5 {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-size: 0.875rem; color: rgba(255,255,255,0.55);
+  text-decoration: none; transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+.footer-bottom {
+  padding-top: 28px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 0.75rem; color: rgba(255,255,255,0.25);
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.on { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── KEYFRAMES ── */
+@keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:none; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero { padding: 120px 40px 60px; }
+  .hero-left { column-gap: 40px; }
+  section { padding: 80px 40px; }
+  #why { padding: 80px 40px; }
+  .cta-section { padding: 80px 40px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  section { padding: 64px 20px; }
+  #why { padding: 40px 20px 64px; }
+  #why .centered { margin-bottom: 28px !important; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-left {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "badge"
+      "title"
+      "sub"
+      "visual"
+      "acts";
+    column-gap: 0;
+  }
+  .hero-right { margin-top: 32px; }
+  /* Services: horizontal scroll carousel on mobile */
+  .services-grid {
+    display: flex; flex-wrap: nowrap; align-items: stretch;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px; padding-bottom: 8px;
+  }
+  .services-grid::-webkit-scrollbar { display: none; }
+  .services-grid .svc-card {
+    min-width: 82vw; max-width: 82vw; flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 24px 20px;
+  }
+  .services-grid .svc-card[style*="grid-column"] { min-width: 82vw; max-width: 82vw; }
+  .svc-fitment-cta { display: none; }
+  .cta-section { padding: 64px 20px; }
+  footer { padding: 48px 20px 28px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .about-creds { grid-template-columns: 1fr; }
+  .about-domains-2col { display: none; }
+  /* Process: tighten number column so pills have more room */
+  .proc-item {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+    padding: 20px 16px;
+  }
+  .proc-num {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    font-size: 0.68rem;
+  }
+  /* Clients carousel: native horizontal scroll on mobile, one card per snap */
+  .carousel-wrap { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .carousel-wrap::-webkit-scrollbar { display: none; }
+  .carousel-track { transform: none !important; display: flex; width: auto; flex-wrap: nowrap; }
+  .carousel-slide { display: contents; }
+  .carousel-slide .cc { min-width: 85vw; max-width: 85vw; flex-shrink: 0; scroll-snap-align: start; margin-right: 14px; }
+  .carousel-nav { display: none; }
+  .cc-body {
+    max-height: 100px; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .cc-body::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--mint));
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cc.expanded .cc-body { max-height: 600px; }
+  .cc.expanded .cc-body::after { opacity: 0; }
+  .cc-more-btn {
+    display: block;
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; font-size: 0.75rem; font-weight: 700;
+    color: var(--forest2); padding: 6px 0 14px;
+    letter-spacing: 0.03em; text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="box">
-    <h1>Scale<span>Right</span></h1>
-    <p>Something great is coming. Stay tuned.</p>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="sr-logo.svg" class="nav-icon" alt="ScaleRight"/>
+    <span class="nav-wordmark">ScaleRight</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://calendly.com/karangupta-scaleright/30min" target="_blank" class="nav-cta">Book a Fitment Call</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>Diagnose
+      <span class="hero-badge-dot"></span>Design
+      <span class="hero-badge-dot"></span>Build
+    </div>
+    <h1>Built to Scale.<br/><span class="green">Not Just Advice.</span></h1>
+    <p class="hero-sub">
+      Growing businesses hit a point where the way they operate starts <strong>costing them</strong>: missed decisions, founder bottlenecks, systems held together with spreadsheets. <strong>Diagnose</strong> what's actually broken. <strong>Design</strong> what needs to change. <strong>Implement</strong> it <em>end to end</em>. From manufacturing and traditional businesses to B2B tech startups.
+    </p>
+    <div class="hero-right">
+    <div class="hero-visual" style="aspect-ratio: auto; padding: 36px;">
+      <div style="font-size: 1rem; font-weight: 700; color: var(--forest); line-height: 1.6; margin-bottom: 28px; letter-spacing: -0.02em; text-align: center;">
+        Where's your pain?
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 3px; height: 32px; background: var(--lime); border-radius: 2px; flex-shrink: 0;"></div>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--forest); letter-spacing: -0.02em; line-height: 1.4;">Things are broken</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 400;">Firefighting, chaos, unclear ownership, repeated mistakes</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 3px; height: 32px; background: var(--lime); border-radius: 2px; flex-shrink: 0;"></div>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--forest); letter-spacing: -0.02em; line-height: 1.4;">Things are slow</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 400;">Bottlenecks, delays, manual effort, decision paralysis</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 3px; height: 32px; background: var(--lime); border-radius: 2px; flex-shrink: 0;"></div>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--forest); letter-spacing: -0.02em; line-height: 1.4;">Things won't scale</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 400;">Processes, systems, and structures that work for 10 but break at 50</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); align-items: center;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 3px; height: 32px; background: var(--lime); border-radius: 2px; flex-shrink: 0;"></div>
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--forest); letter-spacing: -0.02em; line-height: 1.4;">Things don't exist</span>
+          </div>
+          <span style="font-size: 0.78rem; color: var(--mid); line-height: 1.65; font-weight: 400;">Market, channel, or capability for the next slab</span>
+        </div>
+      </div>
+    </div>
   </div>
+    <div class="hero-actions">
+      <a href="https://calendly.com/karangupta-scaleright/30min" target="_blank" class="btn-primary">Book a Fitment Call →</a>
+      <a href="#process" class="btn-secondary">See How It Works</a>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="centered">
+    <div class="sec-rule"></div>
+    <h2 class="sec-title">Services</h2>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 56px;">
+      <span data-svc="fitment" style="padding: 7px 18px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--rule); color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;">Fitment</span>
+      <span data-svc="diagnose" style="padding: 7px 18px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--rule); color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;">Diagnose</span>
+      <span data-svc="design" style="padding: 7px 18px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--rule); color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;">Design</span>
+      <span data-svc="build" style="padding: 7px 18px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--rule); color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;">Build</span>
+      <span data-svc="partner" style="padding: 7px 18px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--rule); color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: -0.01em; cursor: pointer;">Partner</span>
+    </div>
+  </div>
+  <div class="services-grid reveal">
+    <div id="svc-fitment" class="svc-card featured" style="grid-column: span 2;">
+      <h3>Fitment · Free</h3>
+      <p>One conversation. A one-pager follows within 24 hours: specific problems observed, not themes, not recommendations. If there's a fit, it becomes the basis for a discovery engagement. No obligation, no pitch.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto; flex-wrap: wrap; gap: 16px;">
+        <div class="svc-meta" style="margin-top: 0;"><span>1 Meeting</span><span>24hr Turnaround</span><span>No Cost</span></div>
+        <a href="https://calendly.com/karangupta-scaleright/30min" target="_blank" class="btn-primary svc-fitment-cta" style="font-size: 0.82rem; padding: 10px 22px; background: var(--lime); color: var(--forest);">Book a Fitment Call →</a>
+      </div>
+    </div>
+    <div id="svc-diagnose" class="svc-card">
+      <h3>Diagnostic & Scoping</h3>
+      <p>Maps what's broken and what fixing it will actually take. Surfaces hard decisions, not safe ones. Ends with a costed options table for what comes next.</p>
+      <div class="svc-meta"><span>2–4 Weeks</span><span>Fixed Fee</span></div>
+    </div>
+    <div id="svc-design" class="svc-card">
+      <h3>Systems Architecture & Design</h3>
+      <p>Designs the full operating model before anything gets built. Processes, structure, systems, and data architecture. The thinking that makes implementation work.</p>
+      <div class="svc-meta"><span>4–6 Weeks</span><span>Fixed Fee</span></div>
+    </div>
+    <div id="svc-build" class="svc-card featured">
+      <h3>Implementation</h3>
+      <p>Executes the blueprint. Tools configured, processes embedded, teams brought along. Includes a stabilisation period before handover to make sure things actually stick.</p>
+      <div class="svc-meta"><span>3–6 Months</span><span>Scoped per project</span></div>
+    </div>
+    <div id="svc-partner" class="svc-card featured">
+      <h3>Fractional Ops Partner</h3>
+      <p>Operational cover for teams running short on capacity. Keeps existing scope on track, ensures new processes stick, and picks up what would otherwise drop. A few days a month, no full-time hire.</p>
+      <div class="svc-meta"><span>Rolling</span><span>Monthly Retainer</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="centered">
+    <div class="sec-rule"></div>
+    <h2 class="sec-title">A Repeatable System.<br/>Every Time.</h2>
+    <p class="sec-desc">Every engagement follows five disciplined stages. The depth varies by scope. The structure never does.</p>
+  </div>
+  <div class="process-list reveal">
+    <div class="proc-item">
+      <div class="proc-num">01</div>
+      <div class="proc-content">
+        <h3>Discover & Diagnose</h3>
+        <div class="proc-keywords">
+          <span class="proc-kw accent">As-is mapping</span>
+          <span class="proc-kw">Stakeholder interviews</span>
+          <span class="proc-kw">Process observation</span>
+          <span class="proc-kw">Systems audit</span>
+          <span class="proc-kw">Gap analysis</span>
+          <span class="proc-kw accent">Root cause</span>
+          <span class="proc-kw">Pain synthesis</span>
+          <span class="proc-kw">Data blind spots</span>
+          <span class="proc-kw accent">Expectation setting</span>
+        </div>
+      </div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">02</div>
+      <div class="proc-content">
+        <h3>Design & Architect</h3>
+        <div class="proc-keywords">
+          <span class="proc-kw accent">Target operating model</span>
+          <span class="proc-kw">Process design</span>
+          <span class="proc-kw accent">Maturity model</span>
+          <span class="proc-kw">Tech stack selection</span>
+          <span class="proc-kw">Data architecture</span>
+          <span class="proc-kw">Org design</span>
+          <span class="proc-kw">Implementation roadmap</span>
+          <span class="proc-kw accent">Sign-off framework</span>
+        </div>
+      </div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">03</div>
+      <div class="proc-content">
+        <h3>Build & Implement</h3>
+        <div class="proc-keywords">
+          <span class="proc-kw">Tool configuration</span>
+          <span class="proc-kw">Workflow automation</span>
+          <span class="proc-kw accent">SOPs</span>
+          <span class="proc-kw accent">UAT</span>
+          <span class="proc-kw">Change requests</span>
+          <span class="proc-kw">Scope control</span>
+          <span class="proc-kw accent">Role clarity</span>
+          <span class="proc-kw">Responsibility mapping</span>
+          <span class="proc-kw">Stakeholder alignment</span>
+          <span class="proc-kw">Team onboarding</span>
+        </div>
+      </div>
+    </div>
+    <div class="proc-item">
+      <div class="proc-num">04</div>
+      <div class="proc-content">
+        <h3>Stabilise & Adopt</h3>
+        <div class="proc-keywords">
+          <span class="proc-kw accent">Adoption tracking</span>
+          <span class="proc-kw">Usage monitoring</span>
+          <span class="proc-kw">Training</span>
+          <span class="proc-kw">Issue triage</span>
+          <span class="proc-kw accent">Process compliance</span>
+          <span class="proc-kw">Weekly check-ins</span>
+          <span class="proc-kw">Data completeness</span>
+        </div>
+      </div>
+    </div>
+    <div class="proc-item" style="border-bottom: none;">
+      <div class="proc-num">05</div>
+      <div class="proc-content">
+        <h3>Optimise & Handover</h3>
+        <div class="proc-keywords">
+          <span class="proc-kw accent">Baseline vs outcomes</span>
+          <span class="proc-kw">Performance review</span>
+          <span class="proc-kw">Full documentation</span>
+          <span class="proc-kw accent">Governance model</span>
+          <span class="proc-kw">Self-sufficiency</span>
+          <span class="proc-kw">Retainer option</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="why">
+  <div class="centered" style="margin-bottom: 48px;">
+    <div class="sec-rule" style="background:var(--lime); margin: 0 auto 16px;"></div>
+    <h2 class="sec-title" style="color:var(--white);">About</h2>
+  </div>
+
+  <!-- Block 1: Credential bar -->
+  <div class="about-creds reveal">
+    <div class="about-cred">
+      <div class="about-cred-num">14+</div>
+      <div class="about-cred-label">Years of hands-on leadership experience</div>
+    </div>
+    <div class="about-cred">
+      <div class="about-cred-num" style="font-size:1.15rem; letter-spacing:-0.02em; padding-top:6px;">Traditional Business (Family)</div>
+      <ul style="margin-top:8px; list-style:none; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>Market Leading PULL Brand</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>Systems-first since the '80s with ECOM since '90s</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>P&amp;L over DAUs &amp; MAUs</li>
+      </ul>
+    </div>
+    <div class="about-cred">
+      <div class="about-cred-num" style="font-size:1.15rem; letter-spacing:-0.02em; padding-top:6px;">Bootstrapped Startup</div>
+      <ul style="margin-top:8px; list-style:none; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>B2B SaaS — built from zero, no playbook</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>End to End Ownership</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>Pivots, kill decisions, and resource constrained bets</li>
+      </ul>
+    </div>
+    <div class="about-cred">
+      <div class="about-cred-num" style="font-size:1.15rem; letter-spacing:-0.02em; padding-top:6px;">VP, FO, Funded B2B SaaS</div>
+      <ul style="margin-top:8px; list-style:none; display:flex; flex-direction:column; gap:6px;">
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>1–100 journey, 50–200 Emp, 3 Geos</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>New Product Strategy to PMF Demos &amp; GTM</li>
+        <li style="font-size:0.72rem; font-weight:500; color:rgba(255,255,255,0.45); display:flex; align-items:flex-start; gap:7px;"><span style="color:var(--lime); flex-shrink:0; margin-top:1px;">–</span>Owned ₹1Cr+ Sales Tech Stack: 3 CRM migrations, 6+ solutions</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Block 2: Narrative + domain list -->
+  <div class="about-grid reveal reveal-delay-1">
+    <div class="about-narrative">
+      <p>Most operators have depth in one context. The breadth across traditional business, startup, and funded SaaS scale-up is what makes the diagnosis faster and the solutions more grounded.</p>
+      <p>The most interesting problems sit at the intersection of people, process, and systems, not inside one function. I diagnose, design, and implement. Senior operator in the room, not a consultant who leaves with a deck.</p>
+      <p>Indian SMEs and growth-stage businesses have access to the right tools and playbooks. What they rarely have is senior operational bandwidth to apply them correctly. That's the gap I work in.</p>
+    </div>
+    <div class="about-domains about-domains-2col">
+      <div class="about-domain">
+        <div class="about-domain-dot"></div>
+        <div><h4>Revenue Operations</h4><p>Structuring how revenue flows: pipeline design, CRM architecture, sales process, automation, and the integrations that connect it all. Built to give leadership real numbers, not activity metrics.</p></div>
+      </div>
+      <div class="about-domain">
+        <div class="about-domain-dot"></div>
+        <div><h4>GTM Strategy &amp; Execution</h4><p>ICP definition, positioning, sales motion, and the enablement that makes it repeatable. Built from scratch when nothing exists, rebuilt when what worked at 10 customers stops working at 100.</p></div>
+      </div>
+      <div class="about-domain">
+        <div class="about-domain-dot"></div>
+        <div><h4>Product Strategy</h4><p>Customer insight to engineering brief to launch. New product modules taken end-to-end in collaboration with product and engineering teams.</p></div>
+      </div>
+      <div class="about-domain">
+        <div class="about-domain-dot"></div>
+        <div><h4>Process &amp; Systems Design</h4><p>Operating models, SOPs, and workflow systems for businesses scaling past the point where informal processes stop working.</p></div>
+      </div>
+      <div class="about-domain">
+        <div class="about-domain-dot"></div>
+        <div><h4>Org &amp; Data Maturity</h4><p>Defining org structure, role clarity, and what gets measured: building the data and reporting layer that makes decisions possible at scale.</p></div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="centered" style="margin-bottom: 48px;">
+    <div class="sec-rule"></div>
+    <h2 class="sec-title">Clients</h2>
+    <p class="sec-desc">A small number of engagements at a time. Full attention on each.</p>
+  </div>
+
+  <div class="carousel-wrap reveal">
+    <div class="carousel-track" id="carouselTrack">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <div class="cc">
+          <div class="cc-tag">Manufacturing</div>
+          <div class="cc-type">Stationery Manufacturer · Delhi NCR · 30+ years in business, 2 factories</div>
+          <div class="cc-body">
+            <div class="cc-block">
+              <div class="cc-block-label">The Challenge</div>
+              <p>A 30-year-old business scaling rapidly into OEM and custom orders. The systems and informal processes that had worked well for years were being asked to do more than they were designed for. Visibility into production status, capacity, and order progress beyond the office floor was limited and largely dependent on individual experience rather than structured data.</p>
+            </div>
+            <div class="cc-block">
+              <div class="cc-block-label">What Was Done</div>
+              <p>Full current-state diagnostic across order flow, production, and inventory. End-to-end system requirements designed: job state model, machine and tool scheduling, integration with Busy ERP, escalation rules, and operator role definitions. Vendor identification and evaluation initiated in parallel, with demos structured against the requirements brief.</p>
+            </div>
+          </div>
+          <button class="cc-more-btn" onclick="toggleCC(this)">More</button>
+          <div class="cc-footer">
+            <span class="cc-service">Diagnostic &amp; Scoping + Systems Architecture</span>
+            <span class="cc-status"><span class="cc-status-dot"></span>Active</span>
+          </div>
+        </div>
+        <div class="cc">
+          <div class="cc-tag">D2C · Beauty &amp; Personal Care</div>
+          <div class="cc-type">Skincare Brand · Pan India · ₹20Cr+ Series A</div>
+          <div class="cc-body">
+            <div class="cc-block">
+              <div class="cc-block-label">The Challenge</div>
+              <p>No unified inventory view across rapidly scaling channels. Monthly stock report built manually. Vendor contracts for a reporting system were about to be signed without a structured data brief to hold the vendor against, just a report wishlist.</p>
+            </div>
+            <div class="cc-block">
+              <div class="cc-block-label">What Was Done</div>
+              <p>Converted a report wishlist into a structured data and scoping brief. Surfaced two issues the client hadn't seen: a broken SKU mapping layer that would corrupt any system built on top of it, and a critical vendor gap — no Tally or Marg integration, making financial reporting impossible with the shortlisted vendor.</p>
+            </div>
+          </div>
+          <button class="cc-more-btn" onclick="toggleCC(this)">More</button>
+          <div class="cc-footer">
+            <span class="cc-service">Reporting Systems Design + Vendor Risk Assessment</span>
+            <span class="cc-status"><span class="cc-status-dot"></span>Active</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="carousel-btn" id="carouselPrev" aria-label="Previous">
+      <svg viewBox="0 0 16 16"><polyline points="10 4 6 8 10 12"/></svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots">
+      <div class="carousel-dot active" data-index="0"></div>
+    </div>
+    <button class="carousel-btn" id="carouselNext" aria-label="Next">
+      <svg viewBox="0 0 16 16"><polyline points="6 4 10 8 6 12"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="sec-rule" style="margin:0 auto 16px;"></div>
+  <h2 class="sec-title" style="max-width:600px;margin:0 auto 16px;">Ready to Fix What's<br/>Actually Holding You Back?</h2>
+  <p class="sec-desc" style="margin:0 auto 40px;">Start with a Fitment Call. No obligation, no pitch. One conversation to assess fit, before any commitment is made.</p>
+  <div class="cta-actions">
+    <a href="https://calendly.com/karangupta-scaleright/30min" target="_blank" class="btn-primary">Book a Fitment Call →</a>
+    <button class="btn-secondary btn-copy-email" id="copyEmailBtn" onclick="copyEmail()">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><rect x="5" y="5" width="9" height="9" rx="2"/><path d="M11 5V3a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/></svg>
+      <span id="copyEmailLabel">karan@scaleright.in</span>
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-icon">S</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--white);letter-spacing:-0.01em;">ScaleRight.in</div>
+      <p>Operational consultancy for Indian businesses that want to grow without breaking.</p>
+      <p style="margin-top:8px;font-size:0.76rem;color:rgba(255,255,255,0.25);">Delhi, India · karan@scaleright.in</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Fitment</a></li>
+        <li><a href="#services">Diagnostic &amp; Scoping</a></li>
+        <li><a href="#services">Systems Architecture &amp; Design</a></li>
+        <li><a href="#services">Implementation</a></li>
+        <li><a href="#services">Fractional Ops Partner</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#why">About</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="mailto:karan@scaleright.in">karan@scaleright.in</a></li>
+        <li><a href="https://linkedin.com/in/karangupta86" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ScaleRight.in · All rights reserved.</span>
+    <span>Operational Consultancy · India</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  els.forEach(e => obs.observe(e));
+
+  // Service pill scroll (mobile only)
+  function copyEmail() {
+    navigator.clipboard.writeText('karan@scaleright.in').then(() => {
+      const label = document.getElementById('copyEmailLabel');
+      label.textContent = 'Copied!';
+      setTimeout(() => label.textContent = 'karan@scaleright.in', 2000);
+    });
+  }
+
+  function toggleCC(btn) {
+    const card = btn.closest('.cc');
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
+  }
+
+  const svcGrid = document.querySelector('.services-grid');
+  document.querySelectorAll('[data-svc]').forEach(pill => {
+    pill.addEventListener('click', () => {
+      if (window.innerWidth > 720) return;
+      const target = document.getElementById('svc-' + pill.dataset.svc);
+      if (!target || !svcGrid) return;
+      const gridRect = svcGrid.getBoundingClientRect();
+      const cardRect = target.getBoundingClientRect();
+      svcGrid.scrollBy({ left: cardRect.left - gridRect.left, behavior: 'smooth' });
+    });
+  });
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const slides = document.querySelectorAll('.carousel-slide');
+  let current = 0;
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('carouselPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('carouselNext').addEventListener('click', () => goTo(current + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+</script>
 </body>
 </html>
